@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="Musique.View.ListSongPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Musique.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:entity="using:Musique.Entity"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+       
+    
+        <ScrollViewer>
+          
+            <ListView x:ConnectionId='8' x:Name="ListViewSong" >
+                <ListView.ItemTemplate>
+                    <DataTemplate                         >
+                        
+                        
+                        <StackPanel x:ConnectionId='10'  Orientation="Horizontal"                                   Tag="{Binding}">
+                            <Ellipse Height="60" Width="60" VerticalAlignment="Center" Margin="10,10,0,10">
+                                <Ellipse.Fill>
+                                    <ImageBrush  ImageSource="{Binding thumbnail}" />
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <StackPanel Margin="20,20,0,0">
+                                <TextBlock  VerticalAlignment="Center"  FontSize="20" FontWeight="Bold" Text="{Binding name}"></TextBlock>
+                                <TextBlock  VerticalAlignment="Center" FontSize="12"  Text="{Binding singer}"></TextBlock>
+                            </StackPanel>
+                           
+                        </StackPanel>
+                       
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+          
+        </ScrollViewer>
+        
+        <CommandBar VerticalAlignment="Bottom" >
+       
+            <AppBarSeparator />
+
+            <AppBarButton x:ConnectionId='4' Icon="Previous" Label="Previous"                 />
+            <AppBarButton x:ConnectionId='5' Icon="Play" x:Name="PlayAndPauseButton" Label="Play"             />
+            <AppBarButton x:ConnectionId='6' Icon="Next" Label="Next"             />
+
+
+            <CommandBar.Content>
+
+                <TextBlock x:ConnectionId='7' HorizontalTextAlignment="Left"  VerticalAlignment="Center" x:Name="NowPlayingText" Text="Now playing..." Margin="2,8,0,0"/>
+            </CommandBar.Content>
+
+        </CommandBar>
+        <ProgressBar x:ConnectionId='2' x:Name="ProgressBar" Width="380" Value="0" VerticalAlignment="Bottom" Margin="0,0,0,17"></ProgressBar>
+        <MediaElement x:ConnectionId='3' x:Name="MyMediaElement"></MediaElement>
+    </Grid>
+</Page>
+
